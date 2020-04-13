@@ -14,4 +14,12 @@ import dagger.Component;
 )
 public interface AppComponent {
     void inject(MainActivity activity);
+        
+    public interface ComponentProvider {
+        AppComponent getInjector()
+    }
+    
+    public static AppComponent getInjector(Context context) {
+        return ((ComponentProvider) context.applicationContext).getInjector()
+    }
 }
